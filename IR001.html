@@ -13,6 +13,8 @@
         rel="stylesheet">
     <link rel="stylesheet" href="design.css">
     <link rel="stylesheet" href="pages.css">
+    <link rel="stylesheet" href="glee.css">
+    <link rel="stylesheet" href="extras.css">
 </head>
 
 <body>
@@ -47,8 +49,8 @@
                         <div class="cd-center">★</div>
                     </div>
                     <img class="hero-photo" src="./images/me.png" alt="Photo of me" onerror="this.style.display='none'">
-                    <div class="sticker sticker-top">100%<br>ICONIC</div>
-                    <div class="sticker sticker-bottom">GEEK<br>CHIC ♡</div>
+                    <img class="sticker sticker-top" src="./images/flag-deco.jpg" alt="flag">
+                    <div class="sticker sticker-bottom">GLEEK<br>CHIC ♡</div>
                     <span class="floating-star star-a">✦</span><span class="floating-star star-b">✧</span>
                 </div>
                 <div class="hero-footer"><span>WELCOME, INTERNET STRANGER!</span><span id="liveClock">00:00:00</span>
@@ -60,12 +62,14 @@
                     <div class="window-bar"><span><b class="window-dot"></b>ABOUT_ME.exe</span><span>— □ ×</span></div>
                     <div class="about-content">
                         <div class="avatar-frame">
-                            <div class="avatar-placeholder"><span>YOUR<br>PHOTO<br>HERE</span><b>♡</b></div><span
-                                class="avatar-caption">[ USER PROFILE ]</span>
+                            <div class="avatar-placeholder has-photo">
+                                <img src="images/me2.jpg" alt="Photo of me">
+                            </div>
+                            <span="avatar-caption">[ USER PROFILE ]</span>
                         </div>
                         <div class="profile-text">
                             <p class="eyebrow">HELLO, WORLD!</p>
-                            <h2>I'm <span class="editable">YOUR NAME</span> <span class="sparkle">✦</span></h2>
+                            <h2>I'm <span class="editable">Aaliyah Aya-ay</span> <span class="sparkle">✦</span></h2>
                             <p>Welcome to my little digital scrapbook! This is where I keep my favorite things, current
                                 obsessions, music, and random thoughts.</p>
                             <div class="profile-stats">
@@ -85,9 +89,8 @@
                             <h2>NOW PLAYING</h2>
                         </div>
                     </div>
-                    <!-- Replace the ID after /embed/playlist/ with your own playlist ID -->
                     <div class="embed-wrap"><iframe title="Spotify playlist"
-                            src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0"
+                            src="https://open.spotify.com/embed/playlist/4OA4plrYXeB1S3JtKXlE1C?utm_source=generator&si=07937c8cfeea4bd7"
                             width="100%" height="152" frameborder="0" allowfullscreen
                             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                             loading="lazy"></iframe></div>
@@ -170,10 +173,116 @@
                 <p class="gallery-intro">A few empty frames waiting for your favorite photos, screenshots, and memories.
                 </p>
                 <div class="gallery-grid">
-                    <div class="gallery-slot slot-wide"><span>DROP A FAVORITE PHOTO HERE</span><b>✦</b></div>
-                    <div class="gallery-slot"><span>YOUR<br>FAVE THING</span><b>♡</b></div>
-                    <div class="gallery-slot"><span>CORE<br>MEMORY</span><b>✧</b></div>
-                    <div class="gallery-slot"><span>MOODBOARD<br>LOADING...</span><b>★</b></div>
+
+                    <div class="gallery-slot slot-wide has-img">
+                        <img src="./images/best_dog.jpg" alt="Best Dog Ever">
+                        <span class="caption">My Baby ♡</span>
+                    </div>
+
+                    <div class="gallery-slot has-img">
+                        <img src="./images/fav_musical.jpg" alt="Fav Musical">
+                        <span class="caption">Fav Musical</span>
+                    </div>
+
+                    <div class="gallery-slot has-img">
+                        <img src="./images/Fav_series.jpg" alt="fav series">
+                        <span class="caption">24/7 Rewatch</span>
+                    </div>
+
+                    <div class="gallery-slot has-img">
+                        <img src="./images/fav_anime.jpg" alt="fav anime">
+                        <span class="caption"></span>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <section class="panel glee-panel" id="stage">
+                <div class="section-title-row">
+                    <div>
+                        <p class="eyebrow">BACKSTAGE PASS</p>
+                        <h2>THE GREEN ROOM <span>★</span></h2>
+                    </div>
+                    <span class="badge">ENCORE</span>
+                </div>
+
+                <div class="glee-grid">
+
+                    <article class="glee-card">
+                        <span class="tag-gold">★ MASHUP OF THE WEEK</span>
+                        <h3>SONG ONE <i>×</i> SONG TWO</h3>
+                        <p>Why these two belong together, in a line or two.</p>
+                    </article>
+
+                    <article class="glee-card">
+                        <span class="tag-gold">★ IF I HAD A SOLO</span>
+                        <h3>YOUR SOLO SONG</h3>
+                        <p class="by">BY YOUR FAVORITE ARTIST</p>
+                        <p>Why this would be your big moment.</p>
+                    </article>
+
+                    <article class="glee-card">
+                        <span class="tag-gold">★ SLUSHIE COUNTER</span>
+                        <div class="slush-count" id="slushieCount">0</div>
+                        <button class="button button-primary" id="slushieBtn">SLUSHIE SPLASH! 🥤</button>
+                        <p class="slush-msg" id="slushieMsg"></p>
+                    </article>
+
+                    <article class="glee-card quote-card">
+                        <span class="tag-gold">★ QUOTE OF THE MOMENT</span>
+                        <blockquote id="quoteText">Loading a quote…</blockquote>
+                        <cite id="quoteBy"></cite>
+                        <button class="button button-ghost" id="quoteBtn">NEW QUOTE ↻</button>
+                    </article>
+
+                </div>
+            </section>
+
+            <section class="panel glee-panel" id="quiz">
+                <div class="section-title-row">
+                    <div>
+                        <p class="eyebrow">FIND YOUR PLACE ON STAGE</p>
+                        <h2>WHICH GLEE CLUB ROLE ARE YOU? <span>♫</span></h2>
+                    </div>
+                </div>
+                <div id="quizBox" style="margin-top:22px"></div>
+            </section>
+
+            <section class="panel glee-panel" id="applause">
+                <div class="section-title-row">
+                    <div>
+                        <p class="eyebrow">THE AUDIENCE SPEAKS</p>
+                        <h2>APPLAUSE WALL <span>👏</span></h2>
+                    </div>
+                    <span class="badge">STANDING OVATION</span>
+                </div>
+
+                <form class="applause-form" id="applauseForm">
+                    <input name="name" placeholder="Your name" maxlength="30" required>
+                    <input name="message" placeholder="Leave some applause…" maxlength="160" required>
+                    <button class="button button-primary" type="submit">CLAP ✦</button>
+                </form>
+
+                <p class="applause-note" id="applauseNote">YOUR NOTE IS SENT TO ME PRIVATELY ♡</p>
+                <div class="applause-wall" id="applauseWall"></div>
+            </section>
+            </section>
+
+            <section class="panel linkbio" id="links">
+                <div class="linkbio-card">
+                    <div class="linkbio-avatar"><img src="images/me2.jpg" alt="" onerror="this.remove()">A</div>
+                    <h2>AALIYAH AYA-AY</h2>
+                    <p class="linkbio-tag">BSIS FRESHMAN · DREAMER · MAIN CHARACTER</p>
+                    <a class="link-btn" href="https://instagram.com/yourname" target="_blank"
+                        rel="noopener"><span>◎</span>INSTAGRAM<em>➜</em></a>
+                    <a class="link-btn" href="https://tiktok.com/@yourname" target="_blank"
+                        rel="noopener"><span>♪</span>TIKTOK<em>➜</em></a>
+                    <a class="link-btn" href="https://github.com/yourname" target="_blank"
+                        rel="noopener"><span>⌘</span>GITHUB<em>➜</em></a>
+                    <a class="link-btn" href="https://open.spotify.com/user/yourname" target="_blank"
+                        rel="noopener"><span>♫</span>SPOTIFY<em>➜</em></a>
+                    <a class="link-btn" href="mailto:your-email@example.com"><span>✉</span>EMAIL ME<em>➜</em></a>
                 </div>
             </section>
 
@@ -183,14 +292,15 @@
                     <h2>YOU'VE REACHED THE END!</h2>
                     <p>Thanks for visiting my little corner of the internet. Stay weird, stay wonderful. ♡</p>
                 </div>
-                <a class="button button-primary"
-                    href="mailto:your-email@example.com?subject=Hello%20from%20your%20website">SAY HELLO ↗</a>
+                <img class="guest-img" src="images/guestbook.png" alt="" onerror="this.remove()">
             </section>
         </main>
         <footer class="site-footer"><span>© 2026 CTRL + GLEE</span><span>MADE WITH ♡ AND A LITTLE TOO MUCH HTML</span><a
                 href="#home">BACK TO TOP ↑</a></footer>
     </div>
     <script src="script.js"></script>
+    <script src="glee.js"></script>
+    <script src="extras.js"></script>
 </body>
 
 </html>

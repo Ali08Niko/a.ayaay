@@ -161,4 +161,575 @@
     }
 }
 
-.now-panel .embed-wrap { margin-top: 14px; }
+.now-panel .embed-wrap { 
+    margin-top: 14px; 
+}
+
+/* REAL PHOTOS */
+.avatar-placeholder.has-photo {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+}
+
+.avatar-placeholder.has-photo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-slot.has-img {
+    padding: 0;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+}
+
+.gallery-slot.has-img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s;
+}
+
+.gallery-slot.has-img:hover img {
+    transform: scale(1.06);
+}
+
+/* optional caption that appears on hover */
+.gallery-slot .caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 8px 10px;
+    background: linear-gradient(transparent, #0a0710ee);
+    color: var(--white);
+    font: 8px 'Silkscreen', sans-serif;
+    opacity: 0;
+    transition: .25s;
+}
+
+.gallery-slot.has-img:hover .caption {
+    opacity: 1;
+}
+
+/* LIGHTBOX */
+.gallery-slot.has-img,
+.avatar-placeholder.has-photo { cursor: zoom-in; }
+
+.gallery-slot .caption { pointer-events: none; }
+
+body.lightbox-open { overflow: hidden; }
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(10, 7, 16, .93);
+    backdrop-filter: blur(6px);
+}
+
+.lightbox.open {
+    display: flex;
+    animation: lb-fade .2s ease;
+}
+
+@keyframes lb-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.lightbox-window {
+    max-width: 94vw;
+    border: 2px solid var(--purple, #a34cff);
+    background: var(--panel, #130d1d);
+    box-shadow: 0 0 40px rgba(163, 76, 255, .35);
+}
+
+.lightbox-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: linear-gradient(90deg, #4a1d70, #1b1028);
+    font: 9px 'Silkscreen', sans-serif;
+    color: var(--white, #fff);
+}
+
+.lightbox-close {
+    background: none;
+    border: 1px solid var(--white, #fff);
+    color: var(--white, #fff);
+    font: 10px 'Silkscreen', sans-serif;
+    padding: 3px 8px;
+    cursor: pointer;
+}
+
+.lightbox-close:hover { background: var(--white, #fff); color: #160b20; }
+
+.lightbox-stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    background: #0a0710;
+}
+
+.lightbox-stage img {
+    display: block;
+    max-width: 92vw;
+    max-height: 72vh;
+    object-fit: contain;
+}
+
+.lightbox-caption {
+    padding: 10px 14px;
+    font: 10px 'Silkscreen', sans-serif;
+    color: var(--lavender, #d9b8ff);
+    text-align: center;
+    min-height: 14px;
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 54px;
+    background: rgba(10, 7, 16, .7);
+    border: 2px solid var(--white, #fff);
+    color: var(--white, #fff);
+    font: 14px 'Silkscreen', sans-serif;
+    cursor: pointer;
+}
+
+.lightbox-nav:hover { background: var(--purple, #a34cff); }
+.lightbox-prev { left: 10px; }
+.lightbox-next { right: 10px; }
+.lightbox.single .lightbox-nav { display: none; }
+
+@media (max-width: 480px) {
+    .lightbox-nav { width: 34px; height: 46px; }
+}
+
+/* =========================================
+   VALUES PAGE
+   ========================================= */
+
+/* small label above each heading (matches your .eyebrow) */
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 10px;
+    font: 9px 'Silkscreen', sans-serif;
+    letter-spacing: 2px;
+    color: var(--purple-bright);
+}
+
+.section-label::before {
+    content: "✦";
+    color: var(--lavender);
+    text-shadow: 0 0 10px var(--purple);
+}
+
+/* shared heading style for all three sections */
+.page-hero h2,
+.philosophy-section h2,
+.values-reflection h2 {
+    font: 800 clamp(22px, 3.6vw, 34px)/1.15 'Orbitron', sans-serif;
+    letter-spacing: -1px;
+    margin: 0 0 24px;
+    text-shadow: 3px 3px 0 #4a1d70;
+}
+
+
+/* ---------- 1. PRINCIPLES (3 cards) ---------- */
+
+.principles-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    counter-reset: principle;
+}
+
+.principle-card {
+    position: relative;
+    counter-increment: principle;
+    padding: 26px 22px 24px;
+    background: var(--panel-2, #1b1028);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--purple);
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+
+/* auto numbers: 01 / 02 / 03 */
+.principle-card::before {
+    content: "0" counter(principle);
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font: 22px 'Silkscreen', sans-serif;
+    color: var(--purple);
+    opacity: .35;
+}
+
+.principle-card h3 {
+    margin: 0 36px 12px 0;
+    font: 12px/1.5 'Silkscreen', sans-serif;
+    letter-spacing: 1px;
+    color: var(--white);
+}
+
+.principle-card p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #c8bbd3;
+}
+
+.principle-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--purple-bright);
+    box-shadow: 0 8px 28px rgba(163, 76, 255, .25);
+}
+
+
+/* ---------- 2. PHILOSOPHY ---------- */
+
+.philosophy-section {
+    margin: 18px 0;
+    padding: 36px 44px;
+    background: linear-gradient(135deg, #1b1028, #130d1d);
+    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+}
+
+/* soft purple glow in the corner */
+.philosophy-section::after {
+    content: "";
+    position: absolute;
+    right: -80px;
+    top: -80px;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(163, 76, 255, .22), transparent 70%);
+    pointer-events: none;
+}
+
+.philosophy-card {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    padding: 4px 0 4px 26px;
+    border-left: 3px solid var(--purple);
+}
+
+.philosophy-card p {
+    margin: 0 0 18px;
+    font-size: 15px;
+    line-height: 1.9;
+    color: #d6cbe0;
+}
+
+.philosophy-card p:last-child { margin-bottom: 0; }
+
+/* first paragraph slightly bigger, with a pixel-style first letter */
+.philosophy-card p:first-child::first-letter {
+    font: 700 34px/1 'Orbitron', sans-serif;
+    color: var(--purple-bright);
+    float: left;
+    margin: 2px 8px 0 0;
+    text-shadow: 2px 2px 0 #4a1d70;
+}
+
+
+/* ---------- 3. REFLECTION (quote) ---------- */
+
+.values-reflection {
+    margin: 0 0 18px;
+    padding: 40px 44px 44px;
+    text-align: center;
+    background: var(--panel, #130d1d);
+    border: 1px solid var(--line);
+    box-shadow: inset 0 0 0 4px #0a0710, inset 0 0 0 5px var(--purple);
+}
+
+.values-reflection .section-label { justify-content: center; }
+
+.values-reflection blockquote {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 30px 34px;
+    font: italic 500 clamp(15px, 2.2vw, 19px)/1.85 'Space Grotesk', sans-serif;
+    color: var(--lavender, #d9b8ff);
+    background: rgba(163, 76, 255, .08);
+    border-left: 4px solid var(--purple-bright);
+}
+
+/* big decorative quote mark */
+.values-reflection blockquote::before {
+    content: "“";
+    position: absolute;
+    top: -6px;
+    left: 12px;
+    font: 800 70px/1 'Orbitron', sans-serif;
+    color: var(--purple);
+    opacity: .5;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 900px) {
+    .principles-list { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+    .philosophy-section,
+    .values-reflection { padding: 28px 22px; }
+    .philosophy-card { padding-left: 16px; }
+    .values-reflection blockquote { padding: 26px 20px; }
+}
+
+/* =========================================
+   ACHIEVEMENTS — PERSONAL MILESTONES
+   ========================================= */
+
+/* reuses .section-label from the Values page; this just adds the heading */
+.milestone-section h2 {
+    font: 800 clamp(22px, 3.6vw, 34px)/1.15 'Orbitron', sans-serif;
+    letter-spacing: -1px;
+    margin: 0 0 24px;
+    text-shadow: 3px 3px 0 #4a1d70;
+}
+
+.milestone-section {
+    position: relative;
+    margin: 18px 0;
+    padding: 36px 44px;
+    background: linear-gradient(135deg, #1b1028, #130d1d);
+    border: 1px solid var(--line);
+    overflow: hidden;
+}
+
+/* soft glow in the corner */
+.milestone-section::after {
+    content: "";
+    position: absolute;
+    left: -90px;
+    bottom: -90px;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(163, 76, 255, .2), transparent 70%);
+    pointer-events: none;
+}
+
+.milestone-list {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    counter-reset: milestone;
+}
+
+.milestone-card {
+    position: relative;
+    counter-increment: milestone;
+    padding: 46px 22px 24px;
+    background: var(--panel-2, #1b1028);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--purple);
+    transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+
+/* "LV 01" badge in the corner */
+.milestone-card::before {
+    content: "LV 0" counter(milestone);
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 6px 12px;
+    background: var(--purple);
+    color: #160b20;
+    font: 9px 'Silkscreen', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* sparkle that appears on hover */
+.milestone-card::after {
+    content: "✦";
+    position: absolute;
+    top: 8px;
+    right: 14px;
+    color: var(--lavender);
+    opacity: 0;
+    transition: opacity .2s;
+    text-shadow: 0 0 10px var(--purple);
+}
+
+.milestone-card h3 {
+    margin: 0 0 12px;
+    font: 12px/1.5 'Silkscreen', sans-serif;
+    letter-spacing: 1px;
+    color: var(--white);
+}
+
+.milestone-card p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #c8bbd3;
+}
+
+.milestone-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--purple-bright);
+    box-shadow: 0 8px 28px rgba(163, 76, 255, .25);
+}
+
+.milestone-card:hover::after { opacity: 1; }
+
+@media (max-width: 900px) {
+    .milestone-list { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+    .milestone-section { padding: 28px 22px; }
+}
+
+/* ABOUT PAGE — photo beside text */
+.about-content {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 32px;
+    align-items: start;
+    padding: 28px;
+}
+
+.avatar-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar-placeholder.has-photo {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--purple);
+}
+
+.avatar-placeholder.has-photo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-text {
+    min-width: 0;
+}
+
+.profile-text p {
+    line-height: 1.8;
+}
+
+/* stack on phones */
+@media (max-width: 700px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        padding: 22px;
+    }
+
+    .avatar-frame {
+        max-width: 220px;
+        margin: 0 auto;
+    }
+}
+
+.page-hero { position: relative; }
+
+.hero-side-img {
+    position: absolute;
+    right: 44px;
+    top: 50%;
+    width: 300px;
+    height: 190px;
+    object-fit: cover;
+    transform: translateY(-50%) rotate(3deg);
+    border: 3px solid var(--white);
+    box-shadow: 8px 8px 0 var(--purple);
+    z-index: 1;
+}
+
+@media (max-width: 760px) {
+    .hero-side-img {
+        position: static;
+        display: block;
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+        aspect-ratio: 3 / 2;
+        margin: 22px 0 0;
+        transform: rotate(2deg);
+    }
+}
+
+.guestbook .button { 
+    margin-top: 16px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 24px;
+}
+
+.guest-img {
+    flex-shrink: 0;
+    width: 280px;
+    height: 120px;
+    object-fit: cover;
+    border: 2px solid var(--purple);
+    box-shadow: 6px 6px 0 #4a1d70;
+    transform: rotate(2deg);
+}
+
+@media (max-width: 760px) {
+    .guest-img { width: 100%; height: 150px; margin-top: 16px; }
+}
+
+/* Flag sticker: smaller and higher */
+img.sticker.sticker-top {
+    background: none !important;
+    padding: 0;
+    width: 90px;
+    height: auto;
+    display: block;
+    border: 3px solid var(--white);
+    box-shadow: 4px 4px 0 var(--purple);
+    z-index: 3;
+
+    top: 0;
+    right: 16px;
+    bottom: auto;
+    left: auto;
+}
+
+@media (max-width: 760px) {
+    img.sticker.sticker-top { width: 70px; top: 4px; right: 8px; }
+}

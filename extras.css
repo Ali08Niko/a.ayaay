@@ -1,0 +1,510 @@
+/* EXTRAS — theme switcher, quote, skills, currently board, watchlist, fortune, link card, page curtain */
+.x-label {
+    display: inline-block;
+    margin: 0 0 12px;
+    padding: 5px 10px;
+    background: var(--purple);
+    color: #160b20;
+    font: 9px 'Silkscreen', sans-serif;
+    transform: skewX(-10deg)
+}
+
+/* THEME SWITCHER */
+.theme-fab {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    z-index: 900
+}
+
+.theme-main {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #1b1028;
+    border: 2px solid var(--purple);
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 0 16px rgba(163, 76, 255, .4)
+}
+
+.theme-panel {
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 54px;
+    gap: 8px;
+    padding: 10px;
+    background: #0a0710f2;
+    border: 1px solid var(--line)
+}
+
+.theme-fab.open .theme-panel {
+    display: flex
+}
+
+.theme-dot {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    background: var(--c);
+    cursor: pointer;
+    transition: transform .15s
+}
+
+.theme-dot:hover,
+.theme-dot.on {
+    transform: scale(1.25)
+}
+
+/* QUOTE OF THE WEEK */
+.quote-week {
+    margin: 18px 0;
+    padding: 32px 40px;
+    text-align: center;
+    border: 1px solid var(--line);
+    box-shadow: inset 0 0 0 4px #0a0710, inset 0 0 0 5px var(--purple)
+}
+
+.quote-week blockquote {
+    position: relative;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 10px;
+    font: italic 500 clamp(16px, 2.4vw, 21px)/1.7 'Space Grotesk', sans-serif;
+    color: var(--lavender)
+}
+
+.quote-week blockquote::before {
+    content: "“";
+    display: block;
+    font: 800 56px/.6 'Orbitron', sans-serif;
+    color: var(--purple);
+    opacity: .6
+}
+
+.quote-week cite {
+    display: block;
+    margin-top: 14px;
+    font: 9px 'Silkscreen', sans-serif;
+    color: var(--gold, #ffd24a);
+    font-style: normal
+}
+
+/* SKILLS */
+.skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 34px
+}
+
+.skill-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font: 10px 'Silkscreen', sans-serif
+}
+
+.skill-top b {
+    color: var(--purple-bright)
+}
+
+.skill-bar {
+    height: 16px;
+    border: 2px solid var(--white);
+    padding: 2px;
+    background: #0a0710
+}
+
+.skill-bar span {
+    display: block;
+    height: 100%;
+    width: 0;
+    transition: width 1.2s cubic-bezier(.2, .8, .2, 1);
+    background: repeating-linear-gradient(90deg, var(--purple-bright) 0 9px, var(--purple) 9px 12px)
+}
+
+.skill.in .skill-bar span {
+    width: var(--lv)
+}
+
+/* CURRENTLY BOARD */
+.now-board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px
+}
+
+.now-item {
+    padding: 16px 14px;
+    background: var(--panel-2, #1b1028);
+    border: 1px solid var(--line);
+    border-bottom: 3px solid var(--purple);
+    text-align: center
+}
+
+.now-item .ic {
+    font-size: 26px;
+    color: var(--lavender);
+    text-shadow: 0 0 12px var(--purple)
+}
+
+.now-item small {
+    display: block;
+    margin: 8px 0 4px;
+    font: 8px 'Silkscreen', sans-serif;
+    color: var(--purple-bright)
+}
+
+.now-item b {
+    display: block;
+    font: 11px/1.4 'Silkscreen', sans-serif
+}
+
+.now-item span {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--muted)
+}
+
+/* WATCHLIST CAROUSEL */
+.carousel {
+    position: relative
+}
+
+.watch-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 6px 2px 14px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--purple) transparent
+}
+
+.watch-card {
+    flex: 0 0 180px;
+    scroll-snap-align: start
+}
+
+.poster {
+    position: relative;
+    aspect-ratio: 2/3;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    border: 2px dashed var(--purple);
+    font: 9px/1.6 'Silkscreen', sans-serif;
+    color: var(--lavender);
+    background: repeating-linear-gradient(135deg, #2a173a 0 10px, #1b1028 10px 20px)
+}
+
+.poster.has-img {
+    border-style: solid
+}
+
+.poster img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+.watch-card h3 {
+    margin: 10px 0 2px;
+    font: 11px/1.4 'Silkscreen', sans-serif
+}
+
+.watch-card .meta {
+    font: 8px 'Silkscreen', sans-serif;
+    color: var(--purple-bright)
+}
+
+.watch-card p {
+    margin: 6px 0 0;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--muted)
+}
+
+.status {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 3px 7px;
+    background: var(--gold, #ffd24a);
+    color: #2a1a00;
+    font: 8px 'Silkscreen', sans-serif
+}
+
+.car-btn {
+    position: absolute;
+    top: 34%;
+    z-index: 2;
+    width: 36px;
+    height: 46px;
+    background: #0a0710dd;
+    border: 2px solid var(--white);
+    color: #fff;
+    font: 12px 'Silkscreen', sans-serif;
+    cursor: pointer
+}
+
+.car-btn:hover {
+    background: var(--purple)
+}
+
+.car-prev {
+    left: -12px
+}
+
+.car-next {
+    right: -12px
+}
+
+/* FORTUNE COOKIE */
+.quote-card {
+    grid-column: 1/-1;
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    flex-wrap: wrap
+}
+
+.cookie {
+    font-size: 64px;
+    line-height: 1;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    filter: drop-shadow(0 4px 0 #4a1d70)
+}
+
+.cookie.crack {
+    animation: crack .5s ease
+}
+
+@keyframes crack {
+    20% {
+        transform: rotate(-14deg) scale(1.1)
+    }
+
+    40% {
+        transform: rotate(12deg) scale(1.15)
+    }
+
+    60% {
+        transform: rotate(-8deg)
+    }
+
+    to {
+        transform: none
+    }
+}
+
+.quote-slip {
+    flex: 1;
+    min-width: 220px;
+    padding: 14px 18px;
+    background: #fff6dc;
+    color: #2a1a00;
+    border-left: 6px solid var(--gold, #ffd24a);
+    opacity: .35;
+    transform: translateX(-10px);
+    transition: .4s
+}
+
+.quote-slip.show {
+    opacity: 1;
+    transform: none
+}
+
+.quote-slip p {
+    margin: 0;
+    font: 600 14px/1.6 'Space Grotesk', sans-serif;
+    color: #2a1a00
+}
+
+.quote-slip small {
+    display: block;
+    margin-top: 6px;
+    font: 8px 'Silkscreen', sans-serif;
+    color: #7a5a10
+}
+
+
+
+/* LINK-IN-BIO CARD */
+.linkbio {
+    padding: 36px 20px
+}
+
+.linkbio-card {
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: center
+}
+
+.linkbio-avatar {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    font: 800 36px 'Orbitron', sans-serif;
+    background: var(--purple);
+    border: 3px solid var(--gold, #ffd24a);
+    box-shadow: 0 0 24px rgba(163, 76, 255, .5)
+}
+
+.linkbio-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+.linkbio-card h2 {
+    margin: 0 0 6px;
+    font: 800 22px 'Orbitron', sans-serif
+}
+
+.linkbio-tag {
+    margin: 0 0 22px;
+    font: 9px 'Silkscreen', sans-serif;
+    color: var(--purple-bright)
+}
+
+.link-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 14px 18px;
+    background: var(--panel-2, #1b1028);
+    border: 2px solid var(--white);
+    font: 11px 'Silkscreen', sans-serif;
+    color: #fff;
+    box-shadow: 4px 4px 0 var(--purple);
+    transition: .15s
+}
+
+.link-btn span {
+    color: var(--lavender);
+    font-size: 16px
+}
+
+.link-btn em {
+    margin-left: auto;
+    font-style: normal
+}
+
+.link-btn:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0 var(--gold, #ffd24a);
+    background: var(--purple);
+    color: #160b20
+}
+
+.link-btn:hover span {
+    color: #160b20
+}
+
+/* PAGE TRANSITION CURTAIN */
+.page-curtain {
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+    pointer-events: none;
+    display: flex
+}
+
+.page-curtain i {
+    flex: 1;
+    background: repeating-linear-gradient(90deg, #4a1d70 0 22px, #3a1558 22px 44px);
+    transition: transform .4s cubic-bezier(.7, 0, .3, 1)
+}
+
+.page-curtain i:first-child {
+    transform: translateX(-101%);
+    border-right: 3px solid var(--gold, #ffd24a)
+}
+
+.page-curtain i:last-child {
+    transform: translateX(101%);
+    border-left: 3px solid var(--gold, #ffd24a)
+}
+
+.page-curtain.closed {
+    pointer-events: all
+}
+
+.page-curtain.closed i {
+    transform: none
+}
+
+.page-curtain.instant i {
+    transition: none
+}
+
+@media(max-width:900px) {
+    .now-board {
+        grid-template-columns: repeat(3, 1fr)
+    }
+}
+
+@media(max-width:600px) {
+    .skills {
+        grid-template-columns: 1fr
+    }
+
+    .now-board {
+        grid-template-columns: 1fr 1fr
+    }
+
+    .quote-week {
+        padding: 26px 20px
+    }
+
+    .car-prev {
+        left: 0
+    }
+
+    .car-next {
+        right: 0
+    }
+}
+
+/* RANDOM QUOTE CARD */
+.quote-card {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 28px 24px;
+}
+
+.quote-card blockquote {
+    max-width: 680px;
+    margin: 6px auto 10px;
+    font: italic 500 clamp(16px, 2.4vw, 21px)/1.7 'Space Grotesk', sans-serif;
+    color: var(--lavender);
+    transition: opacity .25s, transform .25s;
+}
+
+.quote-card cite {
+    display: block;
+    margin-bottom: 16px;
+    font: 9px 'Silkscreen', sans-serif;
+    font-style: normal;
+    color: var(--gold, #ffd24a);
+    transition: opacity .25s;
+}
+
+.quote-fade {
+    opacity: 0;
+    transform: translateY(6px);
+}
